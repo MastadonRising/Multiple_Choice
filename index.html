@@ -11,15 +11,53 @@
     <title>Developer Quiz</title>
   </head>
   <body>
-    <h1></h1>
+    <div class="container">
+      <!-- header , Score and Timer -->
+      <div class="row" id = 'header'>
+        <a href="score.html">View High Scores</a> 
+      </div>
+      <!-- starting message -->
+      <div class="row" id = 'start'>
+        <div class="row">
+          <h1>Test your coding knowledge</h1>
+        </div>
+        <div class="row">
+          <UL>
+            <li>Click the Start button below to take the JavaScript quiz</li>
+            <li>You have 15 seconds per question.</li>
+            <li>Unused time roles over.</li>
+            <li>Wrong answers will incur a 10 second penalty</li>
+          </UL> 
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-primary" id ='startbtn'>Start</button>
+        </div>
+      </div>
+      <!-- questions -->
+      <div class="row" id = 'questions'>
 
-   
+      </div>
+      <!-- input -->
+      <div class="row" id = 'input'>
+        <div>
+          <div class="row">
+          <h1>You're Done!</h1>
+          </div>
+          <div class="row" id = 'score'>
 
-                                                    
-
-
-
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Your Initials Please" aria-label="Initials" aria-describedby="basic-addon2">
+          </div>
+          <div class="row">
+            <button type="button" class="btn btn-primary" id ='savebtn'>Submit</button>
+          </div>
+        </div>
+      </div>
+   <!-- end Div -->
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script scr="assets\script.js"></script>
+    <script scr="assets\questions.js"></script>
      </body>
 </html>
