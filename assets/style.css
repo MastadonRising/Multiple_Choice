@@ -1,9 +1,12 @@
 #start{
     display: block;
 }
-#questions{
-display: block:
+#question{
+display: none;
 }
 #input{
-    display: block;
+    display: none;
+}
+.time{
+    display: none;
 }

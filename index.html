@@ -8,13 +8,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets\style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/questions.js"></script>
+    <script src="assets/script.js"></script>
+    
     <title>Developer Quiz</title>
   </head>
   <body>
     <div class="container">
       <!-- header , Score and Timer -->
       <div class="row" id = 'header'>
-        <a href="score.html">View High Scores</a> 
+        <div class= "col-sm-6">
+          <a href="score.html">View High Scores</a> 
+        </div>
+        <div class= "col-sm-6 time"> 
+           <p>Total Time: </p> <p id='time'></p>
+        </div>
       </div>
       <!-- starting message -->
       <div class="row" id = 'start'>
@@ -33,10 +42,48 @@
           <button type="button" class="btn btn-primary" id ='startbtn'>Start</button>
         </div>
       </div>
-      <!-- questions -->
-      <div class="row" id = 'questions'>
 
+
+
+
+
+      <!-- questions -->
+      <div class="row" id = 'question'>
+        <script type="text/javascript">
+        
+          $('#startbtn').on('click', function(){
+            ask()
+          });
+          </script>
+          <h1 id='q'> </h1>
+          <ul>
+            <li >
+              <button  class="btn btn-success">A</button>
+              <span id='a'></span>
+            </li>
+            <li>
+              <button  class="btn btn-success" >B</button>
+              <span id='b'></span>
+            </li>
+            <li>
+              <button  class="btn btn-success" >C</button>
+              <span id='c'></span>
+            </li>
+            <li>
+              <button  class="btn btn-success" >D</button>
+              <span id='d'></span>
+            </li>
+
+          </ul>
       </div>
+
+
+
+
+
+
+
+
       <!-- input -->
       <div class="row" id = 'input'>
         <div>
@@ -56,8 +103,9 @@
       </div>
    <!-- end Div -->
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script scr="assets\script.js"></script>
-    <script scr="assets\questions.js"></script>
+    
+
      </body>
+
+    
 </html>
