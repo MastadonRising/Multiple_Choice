@@ -35,24 +35,30 @@ var questions = [
  
 ];
    
-var i = 0
+var i = 0;
 var totaltime = 15*questions.length;
 var elapsedtime = 0;
+var score = 0;
+var lastquestionindex = questions.length -1;
 
   
-   function question(){ 
-    var title = questions[i].title;
-    $('#q').text(title);
-    $('#a').text(questions[i].choices[0]) 
-    $('#b').text(questions[i].choices[1]) 
-    $('#c').text(questions[i].choices[2]) 
-    $('#d').text(questions[i].choices[3]) 
-    i++
-    };
+function question(){ 
+  if(i <= lastquestionindex){
+   var title = questions[i].title;
+   $('#q').text(title);
+   $('#a').text(questions[i].choices[0]) 
+   $('#b').text(questions[i].choices[1]) 
+   $('#c').text(questions[i].choices[2]) 
+   $('#d').text(questions[i].choices[3])
+   } else {
+ input();}
+};
+
 function con(){
   question()
-  }
-
+  check()
+  i++
+   };
 function ask(){
   console.log('step1')
          $('#start').css('display', 'none');
@@ -60,8 +66,35 @@ function ask(){
          $('.time').css('display', 'block');
          $('#time').text(totaltime)
          $('#question').css('display', 'block');
-         question();
-     setInterval(con, 15000)
+         question()
+         setInterval(con, 15000)
      };
+  
+    function input(){
+    $('#start').css('display', 'none');
+    $('#input').css('display', 'block');
+    $('.time').css('display', 'none');
+    $('#question').css('display', 'none');
+   };
+
+function check(){
+ var time = setInterval(function() {
+   if(elapsedtime < 15){elapsedtime++
+    totaltime --
+    $('#time').text(totaltime)
+  console.log(elapsedtime)}
+   else{clearInterval(time)
+  elapsedtime = 0}
+ 
+ }, 1000);
+}
+ 
+
+
+
+
+
+
+
+
    
-      
