@@ -40,61 +40,92 @@ var totaltime = 15*questions.length;
 var elapsedtime = 0;
 var score = 0;
 var lastquestionindex = questions.length -1;
-
+var currentanswer ='';
+var currentquestionindex = 0;
   
 function question(){ 
   if(i <= lastquestionindex){
    var title = questions[i].title;
+   currentanswer = questions[i].answer
+   currentquestionindex = i;
    $('#q').text(title);
    $('#a').text(questions[i].choices[0]) 
    $('#b').text(questions[i].choices[1]) 
    $('#c').text(questions[i].choices[2]) 
    $('#d').text(questions[i].choices[3])
-   } else {
- input();}
-};
+   console.log(i)
+}};
 
-function con(){
-  question()
-  check()
-  i++
-   };
+
 function ask(){
-  console.log('step1')
+  console.log(i)
          $('#start').css('display', 'none');
          $('#input').css('display', 'none');
          $('.time').css('display', 'block');
          $('#time').text(totaltime)
          $('#question').css('display', 'block');
          question()
-         setInterval(con, 15000)
-     };
+         timer()
+         check()
+             };
   
+  function timer(){
+  var time = setInterval(
+    
+    function() {
+      if(elapsedtime < 15 && totaltime > 0 || i <= lastquestionindex)
+      {
+        elapsedtime++
+        totaltime --
+       $('#time').text(totaltime)
+       $('#score').text(score)
+     console.log(elapsedtime)
+    } if(elapsedtime === 15){
+      i++
+      question()
+      elapsedtime = 0
+    }
+    else
+    { if(totaltime === 0 || i > lastquestionindex){
+      input()
+      clearInterval(time)
+    }}},1000)};
+
     function input(){
-    $('#start').css('display', 'none');
-    $('#input').css('display', 'block');
-    $('.time').css('display', 'none');
-    $('#question').css('display', 'none');
-   };
+      score = score + totaltime
+      $('#start').css('display', 'none');
+      $('#input').css('display', 'block');
+      $('.time').css('display', 'none');
+      $('#question').css('display', 'none');
+      var puntos = $('<h1>')
+      puntos.text('Your final score is ' + score)
+      $('#score1').append(puntos)
+     };
+    
 
 function check(){
- var time = setInterval(function() {
-   if(elapsedtime < 15){elapsedtime++
-    totaltime --
-    $('#time').text(totaltime)
-  console.log(elapsedtime)}
-   else{clearInterval(time)
-  elapsedtime = 0}
  
- }, 1000);
-}
- 
-
-
-
-
-
-
-
-
-   
+  $('#choices').on('click', function(e){
+    var var1 = event.target.id;
+    var choice = questions[currentquestionindex].choices[var1];
+    console.log(event);
+    console.log(var1);
+    console.log(choice);
+    console.log(currentanswer);
+    if(choice === currentanswer){
+      score = score + 10 
+      $('#score').text(score)
+      console.log('correct')
+      localStorage.setItem('score', score)
+     
+      elapsedtime = 0
+      i++
+      question()
+    } else if (choice !== currentanswer){
+      console.log('nope')
+      totaltime = totaltime - 10;
+      elapsedtime = 0
+      i++
+      question()
+    }
+  })};

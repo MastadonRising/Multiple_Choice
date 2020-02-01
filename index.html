@@ -18,12 +18,15 @@
     <div class="container">
       <!-- header , Score and Timer -->
       <div class="row" id = 'header'>
-        <div class= "col-sm-6">
+        <div class= "col-sm-4">
           <a href="score.html">View High Scores</a> 
         </div>
-        <div class= "col-sm-6 time"> 
+        <div class= "col-sm-4 time"> 
            <p>Total Time: </p> <p id='time'></p>
         </div>
+        <div class= "col-sm-4 time"> 
+          <p>Score</p> <p id ='score'></p>
+        </div>  
       </div>
       <!-- starting message -->
       <div class="row" id = 'start'>
@@ -50,26 +53,26 @@
       <!-- questions -->
       <div class="row" id = 'question'>
       <script type="text/javascript">   
-   $('#startbtn').on('click', function(){ask()});
+   $('#startbtn').on('click', ask);
 
      </script>
           <h1 id='q'> </h1>
-          <ul>
+          <ul id = 'choices'>
             <li >
-              <button  class="btn btn-success a" >A</button>
+              <button  class="btn btn-success a"  id ='0'>A</button>
               <span id='a'></span>
               
             </li>
             <li>
-              <button  class="btn btn-success b" >B</button>
+              <button  class="btn btn-success b"  id ='1' >B</button>
               <span id='b'></span>
             </li>
             <li>
-              <button  class="btn btn-success c" >C</button>
+              <button  class="btn btn-success c"  id ='2' >C</button>
               <span id='c'></span>
             </li>
             <li>
-              <button  class="btn btn-success d" >D</button>
+              <button  class="btn btn-success d"   id ='3'>D</button>
               <span id='d'></span>
             </li>
 
@@ -89,15 +92,21 @@
           <div class="row">
           <h1>You're Done!</h1>
           </div>
-          <div class="row" id = 'score'>
+          <div class="row" id = 'score1'>
 
           </div>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Your Initials Please" aria-label="Initials" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id= 'initials' placeholder="Your Initials Please" aria-label="Initials" aria-describedby="basic-addon2">
           </div>
           <div class="row">
             <button type="button" class="btn btn-primary" id ='savebtn'>Submit</button>
           </div>
+          <script>
+            var initials = $('#initials').val()
+            $('#savebtn').on('click', function(){
+              localStorage.setItem('score', score)
+              localStorage.setItem('initials', initials)});
+          </script>
         </div>
       </div>
    <!-- end Div -->

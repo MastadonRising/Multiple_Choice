@@ -2,11 +2,14 @@
     display: block;
 }
 #question{
-display: block;
+display: none;
 }
 #input{
     display: none;
 }
 .time{
     display: none;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-kerning: auto;
 }

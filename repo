@@ -1,0 +1,65 @@
+
+$('.a').on('click', function(){
+
+if( questions[i].choices[0] === questions[i].answer) 
+{
+ score + 10;
+  question();
+  i++;
+} else
+{
+ totaltime - 10;
+ i++;
+ question();
+ $('#time').text(totaltime);
+}
+});
+ 
+$('.b').on('click', function(){
+
+if( questions[i].choices[1] === questions[i].answer) 
+{
+ score + 10;
+  question();
+  i++;
+} else
+{
+ totaltime - 10;
+ i++;
+ question();
+ $('#time').text(totaltime);
+}
+});
+    
+$('.c').on('click', function(){
+
+if( questions[i].choices[2] === questions[i].answer) 
+{
+ score + 10;
+  question();
+  i++;
+} else
+{
+ totaltime - 10;
+ i++;
+ question();
+ $('#time').text(totaltime);
+}
+});
+
+    
+$('.d').on('click', function(){
+
+if( questions[i].choices[3] === questions[i].answer) 
+{
+ score + 10;
+  question();
+  i++;
+} else
+{
+ totaltime - 10;
+ i++;
+ question();
+ $('#time').text(totaltime);
+}
+});
