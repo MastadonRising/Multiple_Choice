@@ -102,10 +102,20 @@
             <button type="button" class="btn btn-primary" id ='savebtn'>Submit</button>
           </div>
           <script>
-            var initials = $('#initials').val()
-            $('#savebtn').on('click', function(){
-              localStorage.setItem('score', score)
-              localStorage.setItem('initials', initials)});
+              $('#savebtn').on('click', function(event){
+    event.preventDefault();
+console.log('working')
+var thisScore = [ { name: $('#initials').val(), score: score } ]; 
+var storedScores = JSON.parse(localStorage.getItem("highScores")); 
+
+if (storedScores !== null) { 
+storedScores.push(thisScore[0]); 
+} else {
+storedScores = thisScore;
+};
+
+localStorage.setItem("highScores", JSON.stringify(storedScores));
+    });
           </script>
         </div>
       </div>

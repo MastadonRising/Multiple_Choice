@@ -42,6 +42,7 @@ var score = 0;
 var lastquestionindex = questions.length -1;
 var currentanswer ='';
 var currentquestionindex = 0;
+var initials = $('#initials').val();
   
 function question(){ 
   if(i <= lastquestionindex){
@@ -53,7 +54,7 @@ function question(){
    $('#b').text(questions[i].choices[1]) 
    $('#c').text(questions[i].choices[2]) 
    $('#d').text(questions[i].choices[3])
-   console.log(i)
+  //  console.log(i)
 }};
 
 
@@ -79,7 +80,7 @@ function ask(){
         totaltime --
        $('#time').text(totaltime)
        $('#score').text(score)
-     console.log(elapsedtime)
+    //  console.log(elapsedtime)
     } if(elapsedtime === 15){
       i++
       question()
@@ -108,24 +109,41 @@ function check(){
   $('#choices').on('click', function(e){
     var var1 = event.target.id;
     var choice = questions[currentquestionindex].choices[var1];
-    console.log(event);
-    console.log(var1);
-    console.log(choice);
-    console.log(currentanswer);
+    // console.log(event);
+    // console.log(var1);
+    // console.log(choice);
+    // console.log(currentanswer);
     if(choice === currentanswer){
       score = score + 10 
       $('#score').text(score)
-      console.log('correct')
+      // console.log('correct')
       localStorage.setItem('score', score)
      
       elapsedtime = 0
       i++
       question()
     } else if (choice !== currentanswer){
-      console.log('nope')
+      // console.log('nope')
       totaltime = totaltime - 10;
       elapsedtime = 0
       i++
       question()
     }
   })};
+
+
+  
+  $('#savebtn').on('click', function(event){
+    event.preventDefault();
+console.log('working')
+var thisScore = [ { name: initials, score: score } ]; 
+var storedScores = JSON.parse(localStorage.getItem("highScores")); 
+
+if (storedScores !== null) { 
+storedScores.push(thisScore[0]); 
+} else {
+storedScores = thisScore;
+};
+
+localStorage.setItem("highScores", JSON.stringify(storedScores));
+    });
